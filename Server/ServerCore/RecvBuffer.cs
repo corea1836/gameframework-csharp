@@ -60,7 +60,7 @@ public class RecvBuffer
         if (numOfBytes > FreeSize)
             return false;
 
-        _readPos += numOfBytes;
+        _writePos += numOfBytes;
         return true;
     }
 }
