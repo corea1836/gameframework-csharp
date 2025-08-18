@@ -59,8 +59,13 @@ public class Listener
         {
             if (args.SocketError == SocketError.Success)
             {
-
+                Session session = new Session();
+                session.Start(args.AcceptSocket);
             }
+            else
+            {
+                Console.WriteLine(args.SocketError);
+            } 
         }
         catch (Exception ex)
         {
