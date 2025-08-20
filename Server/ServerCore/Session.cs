@@ -3,6 +3,41 @@ using System.Net.Sockets;
 
 namespace ServerCore;
 
+public abstract class PacketSession : Session
+{
+    public static readonly int HeaderSize = 2;
+
+    public sealed override int OnRecv(ArraySegment<byte> buffer)
+    {
+        int processLen = 0;
+
+        while (true)
+        {
+            /* [size(2 bytes), packetId(2 bytes), ..., size(2 bytes), packetId(2 bytes)]
+             * 최소한 size + packetId 가 와야 핸들러에게 위임 가능하다. 
+             */
+            if (buffer.Count < HeaderSize)
+                break;
+            
+            //패킷이 완전체로 도착했는지 확인
+            ushort dataSize = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
+            if (buffer.Count < dataSize)
+                break;
+
+            if (dataSize < HeaderSize)
+                break;
+            
+            OnRecvPacket(new ArraySegment<byte>(buffer.Array, buffer.Offset, dataSize));
+
+            processLen += dataSize;
+            buffer = new ArraySegment<byte>(buffer.Array, buffer.Offset + dataSize, buffer.Count - dataSize);
+        }
+
+        return processLen;
+    }
+    
+    public abstract void OnRecvPacket(ArraySegment<byte> buffer);
+}
 public abstract class Session
 {
     //socket, 연결 관련 변수
