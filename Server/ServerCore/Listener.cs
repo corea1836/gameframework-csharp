@@ -6,6 +6,7 @@ namespace ServerCore;
 public class Listener
 {
     private Socket _listenSocket;
+    Func<Session> _sessionFactory;
     
     /// <summary>
     /// 비동기 소켓 연결을 위한 Listener 클래스 입니다. TCP 연결을 지원합니다.
@@ -21,11 +22,13 @@ public class Listener
     /// * 연결 완료 시 OnAcceptCompleted 를 실행하며, 세션을 생성합니다. <br/>
     /// * 연결이 완료된 이벤트는 다시 연결 요청을 대기합니다.
     /// </remarks>
-    public void Init(IPEndPoint endPoint, int register = 10, int backlog = 100)
+    public void Init(IPEndPoint endPoint, Func<Session> sessionFactory, int register = 10, int backlog = 100)
     {
         _listenSocket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         _listenSocket.Bind(endPoint);
         _listenSocket.Listen(backlog);
+        
+        _sessionFactory = sessionFactory;
         
         for (int i = 0; i < register; i++)
         {
@@ -55,8 +58,9 @@ public class Listener
         {
             if (args.SocketError == SocketError.Success)
             {
-                Session session = new Session();
+                Session session = _sessionFactory.Invoke();
                 session.Start(args.AcceptSocket);
+                session.OnConnected(args.AcceptSocket.RemoteEndPoint);
             }
             else
             {

@@ -1,21 +1,31 @@
+using System.Net;
 using System.Net.Sockets;
 
 namespace ServerCore;
 
-public class Session
+public abstract class Session
 {
+    //socket, 연결 관련 변수
     private Socket _socket;
     private int _disconnected = 0;
-
-    private RecvBuffer _recvBuffer = new RecvBuffer(65535);
-
+    
     private SocketAsyncEventArgs _sendArgs = new SocketAsyncEventArgs();
     private SocketAsyncEventArgs _recvArgs = new SocketAsyncEventArgs();
-
-    public int OnRecv(ArraySegment<byte> segment)
-    {
-        return 0;
-    }
+    
+    //receive 관련 변수
+    private RecvBuffer _recvBuffer = new RecvBuffer(65535);
+    
+    //send 관련 변수
+    object _lock = new object();
+    Queue<ArraySegment<byte>> _sendQueue = new Queue<ArraySegment<byte>>();
+    List<ArraySegment<byte>> _pendingList = new List<ArraySegment<byte>>();
+    
+    //핸들러 위임
+    public abstract void OnConnected(EndPoint endPoint);
+    public abstract int OnRecv(ArraySegment<byte> segment);
+    public abstract void OnSend(int numOfBytes);
+    public abstract void OnDisconnected(EndPoint endPoint);
+    
     
     /// <summary>
     /// 클라-서버 연결이 클라 식별, 데이터 전송을 위한 세션 입니다.
@@ -37,6 +47,16 @@ public class Session
         RegisterRecv();
     }
 
+    public void Send(ArraySegment<byte> sendBuff)
+    {
+        lock (_lock)
+        {
+            _sendQueue.Enqueue(sendBuff);
+            if (_pendingList.Count == 0)
+                RegisterSend();
+        }
+    }
+
     public void Disconnect()
     {
         if (Interlocked.Exchange(ref _disconnected, 1) == 1)
@@ -47,10 +67,51 @@ public class Session
     }
     
     #region 네트워크 통신
+
+    void RegisterSend()
+    {
+        if (_disconnected == 1)
+            return;
+        
+        while (_sendQueue.Count > 0)
+        {
+            _pendingList.Add(_sendQueue.Dequeue());
+        }
+        
+        _sendArgs.BufferList = _pendingList;
+
+        try
+        {
+            bool pending = _socket.SendAsync(_sendArgs);
+            if (pending == false)
+                OnSendCompleted(null, _sendArgs);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"RegisterSend Failed {e}");
+            Disconnect();
+        }
+    }
     
     void OnSendCompleted(object sender, SocketAsyncEventArgs args)
     {
-        
+        lock (_lock)
+        {
+            if (args.BytesTransferred > 0 && args.SocketError == SocketError.Success)
+            {
+                _sendArgs.BufferList = null;
+                _pendingList.Clear();
+
+                OnSend(_sendArgs.BytesTransferred);
+                
+                if (_sendQueue.Count > 0)
+                    RegisterSend();
+            }
+            else
+            {
+                Disconnect();
+            }
+        }
     }
 
     /// <summary>
