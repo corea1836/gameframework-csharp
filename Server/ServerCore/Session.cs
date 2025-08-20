@@ -7,19 +7,27 @@ public abstract class PacketSession : Session
 {
     public static readonly int HeaderSize = 2;
 
+    /*
+     * 패킷 세션은 상대방으로부터 받은 byte 배열을 통해 로직을 수행하기 위한 첫 부분 입니다.
+     * 패킷은 아래와 같이 구성됩니다.
+     * [header(2), packetId(2), payload(n), header(2), packetId(2) ...]
+     * [size, size, packetId, packetId, payload, ... , size, size.. ]
+     * header(size) 는 패킷 완전체의 총 크기(header + packetId, payload) 입니다.
+     * 예를들어 size 가 1024 라면 완전체 패킷 하나는 Array 에서 [0, 1, 2, ... 1023, ...] 중 0 ~ 1023 인덱스 까지 입니다.
+     */
     public sealed override int OnRecv(ArraySegment<byte> buffer)
     {
         int processLen = 0;
 
         while (true)
         {
-            /* [size(2 bytes), packetId(2 bytes), ..., size(2 bytes), packetId(2 bytes)]
-             * 최소한 size + packetId 가 와야 핸들러에게 위임 가능하다. 
-             */
             if (buffer.Count < HeaderSize)
                 break;
             
-            //패킷이 완전체로 도착했는지 확인
+            /* 패킷이 완전체로 도착했는지 확인합니다.
+             * 두 개의 byte 를 읽어 합칩니다.(더하는게 아닌 8비트 두 개를 연속으로 놓아 16비트 수로 읽습니다.)
+             * 부호가 없는 16 비트로 컨버팅 합니다.(0 ~ 65,536)
+             */
             ushort dataSize = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
             if (buffer.Count < dataSize)
                 break;
