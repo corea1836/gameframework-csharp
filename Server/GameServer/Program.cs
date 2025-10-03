@@ -1,13 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System.Net;
+using Server.Data;
+using ServerCore;
 
-namespace Server
+namespace Server;
+class Program
 {
-    class Program
+    static Listener _listener = new Listener();
+    static Connector _connector = new Connector();
+    
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World");
-        }
+        ConfigManager.LoadConfig();
+        
+        IPAddress ipAddr = IPAddress.Parse(ConfigManager.Config.ip);
+        IPEndPoint endPoint = new IPEndPoint(ipAddr, ConfigManager.Config.port);
+
     }
 }
 

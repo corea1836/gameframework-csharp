@@ -1,0 +1,11 @@
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/bin/Debug/net9.0/ServerCore.deps.json
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/bin/Debug/net9.0/ServerCore.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/bin/Debug/net9.0/ServerCore.pdb
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.AssemblyInfoInputs.cache
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.AssemblyInfo.cs
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.csproj.CoreCompileInputs.cache
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/refint/ServerCore.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ServerCore.pdb
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/ServerCore/obj/Debug/net9.0/ref/ServerCore.dll

@@ -12,3 +12,9 @@
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.pdb
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.genruntimeconfig.cache
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/ref/GameServer.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/Newtonsoft.Json.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/ServerCore.dll
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/ServerCore.pdb
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.csproj.AssemblyReference.cache
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.csproj.Up2Date
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/config.json
