@@ -18,3 +18,4 @@
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.csproj.AssemblyReference.cache
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/obj/Debug/net9.0/GameServer.csproj.Up2Date
 /Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/config.json
+/Users/hongjibeom/Workspace/Unity_Projects/T1/Server/GameServer/bin/Debug/net9.0/Google.Protobuf.dll

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package Protocol;
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+enum ECreatureState
+{
+  EATURE_STATE_IDLE = 0;
+  EATURE_STATE_MOVING = 1;
+  EATURE_STATE_SKILL = 2;
+  EATURE_STATE_DEAD = 3;
+}        

@@ -19,7 +19,7 @@ public class ClientSession: PacketSession
 
     public override void OnRecvPacket(ArraySegment<byte> buffer)
     {
-        // PacketManager.Inst
+        PacketManager.Instance.OnRecvPacket(this, buffer);
     }
 
     public override void OnDisconnected(EndPoint endPoint)

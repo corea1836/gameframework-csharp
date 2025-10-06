@@ -14,7 +14,6 @@ class Program
         
         IPAddress ipAddr = IPAddress.Parse(ConfigManager.Config.ip);
         IPEndPoint endPoint = new IPEndPoint(ipAddr, ConfigManager.Config.port);
-
     }
 }
 

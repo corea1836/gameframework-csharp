@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v9.0": {
       "GameServer/1.0.0": {
         "dependencies": {
+          "Google.Protobuf": "3.27.0",
           "Newtonsoft.Json": "13.0.4",
           "ServerCore": "1.0.0"
         },
         "runtime": {
           "GameServer.dll": {}
+        }
+      },
+      "Google.Protobuf/3.27.0": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.27.0.0",
+            "fileVersion": "3.27.0.0"
+          }
         }
       },
       "Newtonsoft.Json/13.0.4": {
@@ -38,6 +47,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Google.Protobuf/3.27.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tEaKpc+SP7I3gYW9AHozESyKkrCg8Xe7huI3Q3iUt5t8Dn29r2k1u8jyrGrD16maj/0UsQBM0MDViWEj0iynOA==",
+      "path": "google.protobuf/3.27.0",
+      "hashPath": "google.protobuf.3.27.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.4": {
       "type": "package",
