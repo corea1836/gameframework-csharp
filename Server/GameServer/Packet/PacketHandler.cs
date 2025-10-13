@@ -1,8 +1,8 @@
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using Server;
+using Server.Game.Room;
 using ServerCore;
-
-namespace Server.Packet;
 
 public class PacketHandler
 {
@@ -10,5 +10,13 @@ public class PacketHandler
     {
         C_Test pkt = packet as C_Test;
         Console.WriteLine(pkt.Temp);
+        
+        ClientSession clientSession = session as ClientSession;
+        
+        GameLogic.Instance.Push(() =>
+        {
+            S_Connected conPkt = new S_Connected();
+            clientSession.Send(conPkt);
+        });
     }
 }

@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Google.Protobuf" Version="3.27.0" />
+      <PackageReference Include="Google.Protobuf" Version="3.29.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     </ItemGroup>
     
@@ -28,6 +28,10 @@
     
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
       <Exec Command="bash &quot;$(SolutionDir)GenProto.sh&quot; &quot;$(SolutionDir)&quot; /Server/GameServer/Packet/Generated/ 1" />
+    </Target>
+    
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="bash &quot;$(SolutionDir)GenProto.sh&quot; &quot;$(SolutionDir)&quot; /Client/Assets/@Scripts/Packet/Generated/ 0" />
     </Target>
 
 </Project>

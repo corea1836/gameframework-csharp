@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
@@ -27,8 +29,8 @@ class PacketManager
 
     public void Register()
     {
-        _onRecv.Add((ushort)MsgId.C_Test, MakePacket<C_Test>);
-        _handler.Add((ushort)MsgId.C_Test, PacketHandler.C_TestHandler);
+        _onRecv.Add((ushort)MsgId.S_Connected, MakePacket<S_Connected>);
+        _handler.Add((ushort)MsgId.S_Connected, PacketHandler.S_ConnectedHandler);
 
     }
 
