@@ -10,10 +10,12 @@ public class Managers: MonoBehaviour
     #region Core
     PoolManager _pool = new PoolManager();
     ResourceManager _resource = new ResourceManager();
+    private SceneManagerEx _scene = new SceneManagerEx();
     NetworkManager _network = new NetworkManager();
     
     public static PoolManager Pool { get { return Instance?._pool; } }
     public static ResourceManager Resource { get { return Instance?._resource; } }
+    public static SceneManagerEx Scene { get { return Instance?._scene; } }
     public static NetworkManager Network { get { return Instance?._network; } }
     #endregion
     
@@ -38,5 +40,11 @@ public class Managers: MonoBehaviour
     public void Update()
     {
         _network?.Update();
+    }
+
+    public static void Clear()
+    {
+        Scene.Clear();
+        Pool.Clear();
     }
 }
