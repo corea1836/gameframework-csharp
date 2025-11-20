@@ -9,7 +9,7 @@ class Program
 {
     static Listener _listener = new Listener();
     static Connector _connector = new Connector();
-
+    
     static void GameLogicTask()
     {
         while (true)
