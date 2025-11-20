@@ -8,11 +8,12 @@ public class Managers: MonoBehaviour
     public static Managers Instance { get { Init(); return s_instance; } }
 
     #region Core
-
-    private PoolManager _pool = new PoolManager();
+    PoolManager _pool = new PoolManager();
+    ResourceManager _resource = new ResourceManager();
     NetworkManager _network = new NetworkManager();
     
-    public static PoolManager pool { get { return Instance?._pool; } }
+    public static PoolManager Pool { get { return Instance?._pool; } }
+    public static ResourceManager Resource { get { return Instance?._resource; } }
     public static NetworkManager Network { get { return Instance?._network; } }
     #endregion
     
