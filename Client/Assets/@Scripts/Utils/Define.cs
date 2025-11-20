@@ -4,4 +4,14 @@ public class Define
     {
         Unknown,
     }
+
+    public enum ETouchEvent
+    {
+        PointerUP,
+        PointerDown,
+        Click,
+        BeginDrag,
+        Drag,
+        EndDrag,
+    }
 }
