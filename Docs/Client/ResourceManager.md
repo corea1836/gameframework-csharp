@@ -1,9 +1,9 @@
 # ResourceManager
-ResouceManager 는 유니티 오브젝트를 게임 세상에서 사용할 수 있도록 Load, Instantiate 기능을 제공합니다.
-ResourceManager 에서 Load 할 수 있는 오브젝트는 반드시 Addressable Group 을 통해 preload 되어야 합니다.
+ResouceManager 는 유니티 오브젝트를 게임 세상에서 사용할 수 있도록 Load, Instantiate 기능을 제공합니다.<br>
+ResourceManager 에서 Load 할 수 있는 오브젝트는 반드시 Addressable Group 을 통해 preload 되어야 합니다.<br>
 
-클래스에 정의된 두 영역(리소스, 어드레서블) 이 아래 순서로 동작합니다.
-Addressable Load -> _resources(Dic<string, Object>) 에 저장 -> 게임 세상에서 필요할 때 리소스 로드
+클래스에 정의된 두 영역(리소스, 어드레서블) 이 아래 순서로 동작합니다.<br>
+Addressable Load -> _resources(Dic<string, Object>) 에 저장 -> 게임 세상에서 필요할 때 리소스 로드<br>
 
 어드레서블과 리소스 영역의 Load 는 다른 역할을 하기에 TitleSceneSample(이하 TitleScene) 의 예시와 함께 구체적인 설명을 하겠습니다.
 
