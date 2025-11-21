@@ -10,7 +10,7 @@ Addressable Load -> _resources(Dic<string, Object>) 에 저장 -> 게임 세상�
 TitleScene 은 게임 세상에 진입 전 '로딩 중' 이란느 문구와 함께 초기화 작업을 하는 화면입니다.
 크게 보면 에셋 로드 -> 서버 연결 의 과정을 거칩니다.
 TitleScene 에서 ResourceManager 이 담당하는 에셋 로드 과정은 아래와 같습니다.
-
+```
 #################  TitleScene  ####################
                     Start()       :   callBack 1 전달(모든 리소스를 로드하면 **서버 연결** 과정으로 진행)   
                       |
@@ -43,7 +43,7 @@ TitleScene 에서 ResourceManager 이 담당하는 에셋 로드 과정은 아�
                       ▲
                       |             이때 꺼낸 오브젝트는 prefab 으로 게임 세상에서 사용하기 위해 Unity.Object.Instantiate() 를 합니다.
 ################  Unity Scene  ####################
-
+```
      
                
 

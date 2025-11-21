@@ -10,7 +10,7 @@ gameframework 는 C# 으로 구현된 풀스택 게임 제작 프레임워크 �
 
 ## 기능 설명
 ### Client
-- ResouceManager : 게임 시작 시 prefab 을 로드하거나 게임 세상에서 로드된 prefab 을 instantiate 합니다.
+- ResouceManager : 게임 시작 시 prefab 을 로드하거나 게임 세상에서 로드된 prefab 을 instantiate 합니다.<br>
 [다음 문서로 이동하기](./Docs/Client/ResourceManager.md)
 
 
