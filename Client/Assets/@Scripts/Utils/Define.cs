@@ -3,6 +3,8 @@ public class Define
     public enum EScene
     {
         Unknown,
+        TitleScene,
+        GameScene,
     }
 
     public enum ETouchEvent
