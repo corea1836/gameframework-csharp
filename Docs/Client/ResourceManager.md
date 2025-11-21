@@ -40,8 +40,8 @@ TitleScene 에서 ResourceManager 이 담당하는 에셋 로드 과정은 아�
                       ▲
                       |
                  Instantiate()    : _resources 에 저장된 오브젝트를 꺼내고, pooling 이 필요한 경우 오브젝트 풀링을 합니다.
-                      ▲
-                      |             이때 꺼낸 오브젝트는 prefab 으로 게임 세상에서 사용하기 위해 Unity.Object.Instantiate() 를 합니다.
+                      ▲            이때 꺼낸 오브젝트는 prefab 으로 게임 세상에서 사용하기 위해 Unity.Object.Instantiate() 를 합니다.
+                      |             
 ################  Unity Scene  ####################
 ```
      
