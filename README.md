@@ -15,3 +15,6 @@ gameframework 는 C# 으로 구현된 풀스택 게임 제작 프레임워크 �
 
 - PoolManager : 로드된 prefab 을 게임 세상에서 사용할 때 리소스 절약을 하도록 도와주는 오브젝트 풀링 기능을 제공합니다.
 [문서로 이동하기](./Docs/Client/PoolManager.md)
+
+- NetworkManager : 클라이언트와 서버가 패킷을 주고받기 위한 기능을 제공합니다.
+[문서로 이동하기](./Docs/Client/NetworkManager.md)
